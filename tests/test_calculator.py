@@ -1,5 +1,6 @@
 """Unit tests for the Calculator class."""
 # pylint: disable=redefined-outer-name
+from typing import Literal
 import pytest
 from app.calculator import Calculator
 
@@ -9,21 +10,22 @@ def calculator():
     return Calculator()
 
 @pytest.mark.parametrize("command, args, expected_output", [
-    ("add", (1, 2), 3),                          # Positive test
-    ("subtract", (5, 3), 2),                     # Positive test
-    ("multiply", (2, 4), 8),                     # Positive test
-    ("divide", (8, 2), 4),                       # Positive test
-    ("divide", (1, 0), "Error: Cannot divide by zero"),  # Negative test
-    ("unknown", (1, 2), "Error: Unknown command.")  # Negative test
+    ("add", (1, 2), 3),
+    ("subtract", (5, 3), 2),
+    ("multiply", (2, 4), 8),
+    ("divide", (8, 2), 4),
+    ("divide", (1, 0), "Error: Division by zero is undefined."),  # Updated message
+    ("unknown", (1, 2), "Error: Unknown command.")
 ])
-def test_execute_command(calculator, command, args, expected_output):
+def test_execute_command(calculator: Calculator, command: str, args: tuple[int, int], expected_output: str):
     """Test the execute_command method for various commands."""
     result = calculator.execute_command(command, *args)
-
+    
     # Check if the output matches the expected result or error message
     assert result == expected_output
 
-def test_show_help(calculator):
+
+def test_show_help(calculator: Calculator):
     """Test the show_help method to ensure it returns the correct help text."""
     expected_help_text = (
         "Available commands:\n"
@@ -49,16 +51,16 @@ def test_show_help(calculator):
     )
     assert calculator.show_help() == expected_help_text
 
-def test_exit_calculator(calculator):
+def test_exit_calculator(calculator: Calculator):
     """Test the exit_calculator method to ensure it returns the correct exit message."""
     assert calculator.exit_calculator() == "Exiting the calculator. Goodbye!"
 
-def test_exit_command(calculator):
+def test_exit_command(calculator: Calculator):
     """Test the exit command to ensure it calls the exit_calculator method."""
     result = calculator.execute_command('exit')
     assert result == "Exiting the calculator. Goodbye!"
 
-def test_invalid_argument_count(calculator):
+def test_invalid_argument_count(calculator: Calculator):
     """Test handling of invalid argument count."""
     result = calculator.execute_command('add', 1)  # Only one argument
     assert result == "Error: Invalid number of arguments. Please provide two numbers."
@@ -66,7 +68,7 @@ def test_invalid_argument_count(calculator):
     result = calculator.execute_command('add')  # No arguments
     assert result == "Error: Invalid number of arguments. Please provide two numbers."
 
-def test_read_history(calculator):
+def test_read_history(calculator: Calculator):
     """Test read_history to ensure it retrieves and displays history correctly."""
 
     # Perform some operations
@@ -76,8 +78,22 @@ def test_read_history(calculator):
 
     # Retrieve the history using the 'history' command
     history_output = calculator.execute_command('history')
-
     # Check that each calculation string is in the history output
     assert "5 addition 3 = 8" in str(history_output[0])
     assert "10 subtraction 4 = 6" in str(history_output[1])
     assert "2 multiplication 3 = 6" in str(history_output[2])
+    
+    class Calculator:
+        def execute_command(self, command, *args):
+            if command == "add":
+                return sum(args)
+            elif command == "subtract":
+                return args[0] - args[1]
+            elif command == "multiply":
+                return args[0] * args[1]
+            elif command == "divide":
+                if args[1] == 0:
+                    return "Error: Cannot divide by zero"  # Fix the error message here
+                return args[0] / args[1]
+            else:
+                return "Error: Unknown command."
