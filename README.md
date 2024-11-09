@@ -1,4 +1,6 @@
 IS 218 midterm-calculator
+
+
 Clone the repository:
 git clone: https://github.com/BryanF23/midterm-calculator.git
 cd midterm-calculator
