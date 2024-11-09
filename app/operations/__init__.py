@@ -35,3 +35,4 @@ class Operation(ABC):
             float: The result of the calculation.
         """
         pass  # This is an abstract method, to be defined in subclasses
+
