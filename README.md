@@ -40,4 +40,12 @@ You run pytest to execute tests while checking the test coverage. The --cov part
 Generating a Coverage Report
 To generate a coverage report use run the coverage report command  and it prints a summary of the coverage report to the console
 
+Design Patterns: https://github.com/BryanF23/midterm-calculator/blob/main/app/operations/__init__.py
+
+factory / strategy patterns (multiple files): https://github.com/BryanF23/midterm-calculator/tree/main/app/operations
+
+Facade Pattern: https://github.com/BryanF23/midterm-calculator/blob/main/app/history/__init__.py
+
+Calculator: https://github.com/BryanF23/midterm-calculator/blob/main/app/calculator/__init__.py
+
 Video: https://youtu.be/-1Nii5Fg8eg
