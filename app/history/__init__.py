@@ -87,3 +87,4 @@ class History:
             List[Calculation]: A list containing all Calculation instances in the history.
         """
         return self._history
+
