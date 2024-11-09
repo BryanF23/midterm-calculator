@@ -38,3 +38,7 @@ jobs:
       run: |
         coverage report  # Prints a summary of the coverage report to the console
         coverage xml     # Generates an XML report for more detailed analysis, if needed
+
+        steps:
+    - name: Install dependencies
+     run: pip install -r requirements.txt
