@@ -38,3 +38,5 @@ class Calculation:
         operation_name = self.operation.__class__.__name__.lower()  # Get operation name in lowercase
         result_display = self.result if self.result is not None else "Not calculated"
         return f"{self.operand1} {operation_name} {self.operand2} = {result_display}"
+
+
