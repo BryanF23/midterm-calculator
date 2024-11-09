@@ -24,14 +24,14 @@ def main():
     """Runs the interactive calculator, handling user input and commands."""
     calculator = Calculator()
 
-    display_header("Welcome to the Interactive Calculator!")
+    display_header("Welcome to the Calculator!")
     print(center_text("Type 'help' for a list of commands.") + "\n")
 
     while True:
-        user_input = input(">>> Enter command: ").strip().lower()
+        user_input = input(">>> Enter a command: ").strip().lower()
 
         if user_input in ['exit', 'quit']:
-            display_header("Exiting the calculator. Goodbye!")
+            display_header("Exiting the calculator.")
             break
 
         parts = user_input.split()
