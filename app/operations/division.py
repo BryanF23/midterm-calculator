@@ -31,3 +31,4 @@ class Division(Operation):
         result = a / b
         
         return result
+

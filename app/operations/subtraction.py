@@ -19,3 +19,4 @@ class Subtraction(Operation):
         """
         self._validate_inputs(minuend, subtrahend)  # Validate the inputs are numbers
         return minuend - subtrahend
+

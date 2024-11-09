@@ -24,3 +24,4 @@ class Addition(Operation):
         result = a + b
         
         return result
+

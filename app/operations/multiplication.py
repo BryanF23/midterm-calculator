@@ -24,3 +24,4 @@ class Multiplication(Operation):
         result = a * b
         
         return result
+
