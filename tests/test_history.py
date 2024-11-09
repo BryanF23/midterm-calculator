@@ -88,3 +88,4 @@ def test_load_invalid_json_format(history, tmpdir):
 
     result = history.load(str(filename))
     assert "Error: Failed to decode history data" in result
+
