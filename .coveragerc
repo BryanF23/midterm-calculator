@@ -4,3 +4,5 @@ source = app
 [report]
 omit =
     */tests/*
+
+    
