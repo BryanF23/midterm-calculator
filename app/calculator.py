@@ -12,3 +12,4 @@ class Calculator:
             return args[0] / args[1]
         else:
             return "Error: Unknown command."
+
